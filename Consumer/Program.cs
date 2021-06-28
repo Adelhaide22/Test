@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Core;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
