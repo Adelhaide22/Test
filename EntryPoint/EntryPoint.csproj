@@ -5,4 +5,11 @@
         <RootNamespace>Test</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.7" />
+      <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+      <PackageReference Include="Serilog" Version="2.10.1-dev-01343" />
+      <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    </ItemGroup>
+
 </Project>

@@ -1,7 +1,9 @@
+using Test.DTOs;
+
 namespace Test.Services
 {
-    public class IMessageSender
+    public interface IMessageSender
     {
-        
+        ValidationResult Send<T>(T message);
     }
 }
