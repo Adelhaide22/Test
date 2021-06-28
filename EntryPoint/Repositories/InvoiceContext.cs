@@ -1,5 +1,5 @@
+using Core;
 using Microsoft.EntityFrameworkCore;
-using Test.DTOs;
 
 namespace Test.Repositories
 {
@@ -11,10 +11,6 @@ namespace Test.Repositories
             : base(options)
         {
             Database.EnsureCreated();
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("");
         }
     }
 }

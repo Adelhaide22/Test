@@ -1,8 +1,7 @@
-namespace Test.DTOs
+namespace Test.Models
 {
     public class RabbitOptions
     {
-        public string ConnectionName { get; set; }
         public string Hostname { get; set; }
         public string VirtualHost { get; set; }
         public int Port { get; set; }

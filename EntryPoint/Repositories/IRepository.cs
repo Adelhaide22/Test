@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
-using Test.DTOs;
+using Core;
+using Test.Models;
 
 namespace Test.Repositories
 {

@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
+using Core;
 using Microsoft.AspNetCore.Mvc;
-using Test.DTOs;
+using Microsoft.Extensions.Logging;
 using Test.Repositories;
 using Test.Services;
-using ILogger = Serilog.ILogger;
 
 namespace Test
 {
@@ -13,9 +13,9 @@ namespace Test
     {
         private readonly IMessageSender _messageSender;
         private readonly IRepository _repository;
-        private readonly ILogger _logger;
+        private readonly ILogger<InvoiceController> _logger;
 
-        public InvoiceController(IMessageSender messageSender, IRepository repository, ILogger logger)
+        public InvoiceController(IMessageSender messageSender, IRepository repository, ILogger<InvoiceController> logger)
         {
             _messageSender = messageSender;
             _repository = repository;
@@ -25,16 +25,16 @@ namespace Test
         [HttpPost]
         public async Task<IActionResult> AddInvoice(Invoice invoice)
         {
-            _logger.Information("Receiving invoice");
-            _logger.Information($"Description: {invoice.Description}");
-            _logger.Information($"Supplier: {invoice.Supplier}");
-            _logger.Information($"LinesCount: {invoice.Lines.Count}");
-            _logger.Information($"DueDate: {invoice.DueDate}");
+            _logger.LogInformation("Receiving invoice");
+            _logger.LogInformation($"Description: {invoice.Description}");
+            _logger.LogInformation($"Supplier: {invoice.Supplier}");
+            _logger.LogInformation($"LinesCount: {invoice.Lines.Count}");
+            _logger.LogInformation($"DueDate: {invoice.DueDate}");
             
             var insertingResult = await _repository.Insert(invoice);
             if (!insertingResult.IsValid)
             {
-                _logger.Error("Database error");
+                _logger.LogError("Database error");
                 return StatusCode(500);
             }
             
@@ -42,11 +42,11 @@ namespace Test
             
             if (!sendingResult.IsValid)
             {
-                _logger.Error("Message transportation error");
+                _logger.LogError("Message transportation error");
                 return StatusCode(500);
             }
             
-            _logger.Information("Invoice was successfully handled");
+            _logger.LogInformation("Invoice was successfully handled");
             return Ok();
         }
     }

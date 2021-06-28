@@ -1,7 +1,8 @@
 using System;
 using System.Threading.Tasks;
+using Core;
 using Microsoft.Extensions.Logging;
-using Test.DTOs;
+using Test.Models;
 
 namespace Test.Repositories
 {

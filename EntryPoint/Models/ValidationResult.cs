@@ -1,4 +1,4 @@
-namespace Test.DTOs
+namespace Test.Models
 {
     public class ValidationResult<T>
     {

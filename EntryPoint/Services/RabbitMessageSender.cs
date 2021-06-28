@@ -4,7 +4,8 @@ using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
-using Test.DTOs;
+using Test.Models;
+
 namespace Test.Services
 {
     public class RabbitMessageSender : IMessageSender
@@ -25,7 +26,10 @@ namespace Test.Services
                 _logger.LogInformation("Sending invoice to rabbit queue");
                 var factory = new ConnectionFactory
                 {
-                    HostName = _options.Hostname
+                    HostName = _options.Hostname,
+                    Password = _options.Password,
+                    UserName = _options.UserName,
+                    VirtualHost = _options.VirtualHost
                 };
                 using var connection = factory.CreateConnection();
                 using var channel = connection.CreateModel();

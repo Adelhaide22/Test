@@ -1,4 +1,4 @@
-using Test.DTOs;
+using Test.Models;
 
 namespace Test.Services
 {

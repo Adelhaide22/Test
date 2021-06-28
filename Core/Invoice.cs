@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace Test.DTOs
+namespace Core
 {
     public class Invoice
     {
+        public int Id { get; set; }
         public string Description { get; set; }
         public DateTime DueDate { get; set; }
         public string Supplier { get; set; }
